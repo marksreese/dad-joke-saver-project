@@ -2,12 +2,12 @@
 const nextBtn = document.getElementById("gen")
 const likeBtn = document.getElementById("fav-gen");
 const mainDisp = document.getElementById("quote");
-const faveDisp = document.getElementsByClassName("fav-list");
+const faveDisp = document.getElementById("fav-list").querySelector("ol");
 
 //array to store saved jokes
-const saved = [];
+const savedJokes = [];
 
-//todo: checks to see if it is in favorites, and displays the joke if it is not redundant - how to do without while?
+//todo: checks to see if it is in favorites and displays the joke if it is not redundant
 const dispNewJoke = () => {
     fetch("https://icanhazdadjoke.com/slack", {
         Method: "GET",
@@ -17,7 +17,19 @@ const dispNewJoke = () => {
         },
     }
     ).then(resp => resp.json()).then(joke => {
-        mainDisp.textContent = joke.attachments[0].fallback;
+        const jokeText = joke.attachments[0].fallback;
+        let matches = false;
+        savedJokes.forEach(savedJoke => {
+            if (savedJoke === jokeText){
+                matches = true;
+            }
+        })
+        if (!matches){
+             mainDisp.textContent = jokeText;
+        }
+        else {
+            dispNewJoke();
+        }
         // console.log(joke)
     })
 }
@@ -32,10 +44,12 @@ document.addEventListener("DOMContentLoaded", () => {
     dispNewJoke();
 })
 
-//event listener for like button
+//event listener to add current joke to saved jokes array and display in favorites container
 likeBtn.addEventListener("click", () => {
-    saved.push(mainDisp.textContent);
-
+    savedJokes.push(mainDisp.textContent);
+    const newSaved = document.createElement("li");
+    newSaved.textContent = mainDisp.textContent;
+    faveDisp.append(newSaved);
     //append joke with delete button 
     //event listener for delete button (inline)
 
