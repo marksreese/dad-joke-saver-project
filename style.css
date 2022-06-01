@@ -1,5 +1,9 @@
 body {
   background: lightgrey;
+  /* background-image: url("img_girl.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover; */
 }
 /*  <----------------> */
 h1 {
@@ -7,6 +11,11 @@ h1 {
   font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times,
     serif;
   font-size: 60px;
+}
+
+#display {
+  border-bottom:  solid;
+  color: whitesmoke;
 }
 
 /* .quotes-container {
