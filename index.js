@@ -7,7 +7,17 @@ const faveDisp = document.getElementById("fav-list").querySelector("ol");
 //array to store saved jokes
 const savedJokes = [];
 
-//todo: checks to see if it is in favorites and displays the joke if it is not redundant
+const isRedundant = textToCheck => {
+    let matches = false;
+    savedJokes.forEach(savedJoke => {
+        if (savedJoke === textToCheck){
+            matches = true;
+        }
+    })
+    return matches;
+}
+
+//checks if the pulled joke is already in favorites, displays if not, and uses recursion to pull a new joke if so
 const dispNewJoke = () => {
     fetch("https://icanhazdadjoke.com/slack", {
         Method: "GET",
@@ -18,13 +28,7 @@ const dispNewJoke = () => {
     }
     ).then(resp => resp.json()).then(joke => {
         const jokeText = joke.attachments[0].fallback;
-        let matches = false;
-        savedJokes.forEach(savedJoke => {
-            if (savedJoke === jokeText){
-                matches = true;
-            }
-        })
-        if (!matches){
+        if (!isRedundant(jokeText)){
              mainDisp.textContent = jokeText;
         }
         else {
@@ -46,11 +50,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //event listener to add current joke to saved jokes array and display in favorites container
 likeBtn.addEventListener("click", () => {
-    savedJokes.push(mainDisp.textContent);
-    const newSaved = document.createElement("li");
-    newSaved.textContent = mainDisp.textContent;
-    faveDisp.append(newSaved);
-    //append joke with delete button 
-    //event listener for delete button (inline)
+    if (isRedundant(mainDisp.textContent)){
+        mainDisp.textContent = "This joke has already been saved!";
+    }
+    else if (mainDisp.textContent === "This joke has already been saved!"){
+        //can add functionality here, e.g. highlight saved joke in favorites list
+    }
+    else {
+        //save the index of the joke in the array so it can be spliced later
+        const index = savedJokes.length;
+        savedJokes.push(mainDisp.textContent);
 
+        //create and append delete button and joke text
+        const delBtn = document.createElement("button");
+        const content = document.createElement("li");
+        content.textContent = mainDisp.textContent;
+        delBtn.textContent = "X";
+        content.append(delBtn);
+        faveDisp.append(content);
+
+        delBtn.addEventListener("click", () => {
+            content.remove();
+            if (mainDisp.textContent === "This joke has already been saved!"){
+                mainDisp.textContent = savedJokes[index];
+            }
+            savedJokes[index] = "";
+        })
+    }
 })
