@@ -1,0 +1,128 @@
+body {
+  background: lightgrey;
+}
+/*  <----------------> */
+h1 {
+  text-align: center;
+  font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times,
+    serif;
+  font-size: 60px;
+}
+
+/* .quotes-container {
+
+} */
+
+/* #content {
+  
+} */
+
+.quotes {
+  max-width: 30em;
+  color: white;
+  font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times,
+    serif;
+  letter-spacing: 0.1em;
+  text-align: center;
+  margin: 40px auto;
+  text-transform: lowercase;
+  line-height: 145%;
+  font-size: 2em;
+  font-variant: small-caps;
+}
+
+p {
+  max-width: 30em;
+  max-height: 30em;
+  color: black;
+  font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times,
+    serif;
+  letter-spacing: 0.1em;
+  text-align: center;
+  margin: 40px auto;
+  text-transform: lowercase;
+  line-height: 145%;
+  font-size: 1.5em;
+  font-variant: small-caps;
+}
+
+/* <---Button---> */
+
+#fav-button:hover {
+  text-align: center;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+#gen:hover {
+  background-color: lightsteelblue;
+  color: black;
+  border: thin solid black;
+  opacity: 1;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+#gen {
+  outline: none;
+  padding-top: 5px;
+  text-decoration: none;
+  height: 40px;
+  width: 100px;
+  border-radius: 2px;
+  transition: 0.5s;
+  padding-bottom: 5px;
+  position: absolute;
+  right: 100px;
+}
+
+#fav-gen:hover {
+  background-color: lightsteelblue;
+  color: black;
+  border: thin solid black;
+  opacity: 1;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+#fav-gen {
+  outline: none;
+  padding-top: 5px;
+  text-decoration: none;
+  height: 40px;
+  width: 100px;
+  border-radius: 2px;
+  transition: 0.5s;
+  padding-bottom: 5px;
+  position: absolute;
+  right: 670px;
+}
+
+#x-gen:hover {
+  background-color: lightsteelblue;
+  color: black;
+  border: thin solid black;
+  opacity: 1;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+#x-gen {
+  outline: none;
+  padding-top: 5px;
+  text-decoration: none;
+  height: 40px;
+  width: 100px;
+  border-radius: 2px;
+  transition: 0.5s;
+  padding-bottom: 5px;
+}
+/* <---Other Favorite Button---> */
+
+
+/* #quotes-container {
+  background-color: grey;
+  margin: auto;
+  width: 600px;
+  border: #000;
+} */

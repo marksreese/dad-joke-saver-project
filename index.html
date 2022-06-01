@@ -2,20 +2,23 @@
 <html lang="en">
   <head>
     <!-- <meta> -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Daily Quotes Generator</title>
-    <script defer src="'index.js"></script>
-    <link rel="'stylesheet" href="'style.css" />
+    <script defer src="index.js"></script>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <h1>Daily Quotes</h1>
-    <div class="container"></div>
+    <div class="quotes-container"></div>
     <div id="content">
-      <p id="'quote">
+      <p id="quote" class="quotes">
+        Quote
         <!-- quotes display here -->
         <br />
+        - Anonymous
         <!-- Author -->
-    <div class="comparecontainer">
-    </div>
       </p>
     </div>
     <div id="b-nav">
@@ -24,6 +27,30 @@
         <button id="fav-gen">Favorite</button>
         <button id="gen">Next Quote</button>
       </ul>
+      <button
+        id="fav-button"
+        class="w3-button w3-red"
+        onclick="document.getElementById('id01').style.display='block'"
+      >
+        My Favorites
+      </button>
+      <div
+        id="id01"
+        class="w3-panel w3-green w3-display-container"
+        style="display: none"
+      >
+        <span
+          onclick="this.parentElement.style.display='none'"
+          class="w3-button w3-red w3-display-topright"
+        >
+          X
+        </span>
+        <p>Favorite Quotes</p>
+      </div>
+
+      <!-- <div class="w3-panel w3-grey">
+        <p>I am a panel</p>
+      </div> -->
     </div>
   </body>
 </html>
