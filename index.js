@@ -69,12 +69,6 @@ likeBtn.addEventListener("click", () => {
     faveDisp.append(content);
 
     //mouse over function for favorite lists
-    // content.onmouseover = function () {
-    //   mouseOver();
-    // };
-    // content.onmouseout = function () {
-    //   mouseOut();
-    // };
     content.addEventListener("mouseover", mouseOver);
     content.addEventListener("mouseout", mouseOut);
 
