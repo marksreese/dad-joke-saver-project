@@ -32,7 +32,7 @@ h1 {
 p {
   max-width: 30em;
   max-height: 30em;
-  color: lightblue;
+  color: lightskyblue;
   font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times,
     serif;
   letter-spacing: 0.1em;
@@ -132,7 +132,7 @@ li {
 button {
   background-color: lightsteelblue;
   /* font-color: rgb(39, 34, 34); */
-  opacity: 5;
+  opacity: 1;
 }
 
 /* #x-gen:hover {
