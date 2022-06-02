@@ -1,25 +1,19 @@
 body {
   background: lightgrey;
-  /* background-image: url("img_girl.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover; */
 }
 /*  <----------------> */
 h1 {
   text-align: center;
   font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times,
     serif;
-  font-size: 60px;
+  font-size: 70px;
+  color: white;
 }
 
 #display {
-  /* border-bottom: thin solid; */
+  border-bottom: thin solid;
   color: whitesmoke;
 }
-
-/* #re-sizing {
-} */
 
 .quotes {
   max-width: 30em;
@@ -38,7 +32,7 @@ h1 {
 p {
   max-width: 30em;
   max-height: 30em;
-  color: white;
+  color: lightblue;
   font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times,
     serif;
   letter-spacing: 0.1em;
@@ -51,15 +45,15 @@ p {
 }
 
 u {
-  font-size: 30px;
-  color: black;
+  font-size: 40px;
+  color: burlywood;
 }
 
 /* #id01 {
 } */
 
 li {
-  color: #000;
+  color: burlywood;
   max-width: 20em;
   max-height: 20em;
   font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times,
@@ -169,6 +163,7 @@ li {
   border-radius: 2px;
   transition: 0.5s;
   padding-bottom: 5px;
+  border-radius: px;
 }
 
 /* <---containers--->  */
