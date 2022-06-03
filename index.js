@@ -52,33 +52,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //drag event functions
 const allowDrag = (ev) => {
-    ev.preventDefault();
-}
+  ev.preventDefault();
+};
 //sets type and value of dragged data
 const drag = (ev) => {
-    ev.dataTransfer.setData("text", ev.target.id);
-    // console.log("drag id: " + ev.target.id);
-}
+  ev.dataTransfer.setData("text", ev.target.id);
+  // console.log("drag id: " + ev.target.id);
+};
 //gets dragged data that is of the same type "text" and appends the element with #data to the drop element
 const drop = (ev) => {
-    ev.preventDefault();
-    const data = ev.dataTransfer.getData("text");
-    const node = document.getElementById(data);
-    // console.log("this is drop data: " + data);
-    // console.log("this is the drop id: " + ev.target.id);
-    // console.log("this is the node: " + node);
-    faveDisp.insertBefore(node, ev.target);
-}
+  ev.preventDefault();
+  const data = ev.dataTransfer.getData("text");
+  const node = document.getElementById(data);
+  // console.log("this is drop data: " + data);
+  // console.log("this is the drop id: " + ev.target.id);
+  // console.log("this is the node: " + node);
+  faveDisp.insertBefore(node, ev.target);
+};
 
 //event listener to add current joke to saved jokes array and display in favorites container
 likeBtn.addEventListener("click", () => {
   if (isRedundant(mainDisp.textContent)) {
     mainDisp.textContent = "This joke has already been saved!";
-  }
-  else if (mainDisp.textContent === "This joke has already been saved!") {
+  } else if (mainDisp.textContent === "This joke has already been saved!") {
     //can add functionality here, e.g. highlight saved joke in favorites list
-  }
-  else {
+  } else {
     //save the index of the joke in the array so it can be spliced later
     const index = savedJokes.length;
     savedJokes.push(mainDisp.textContent);
@@ -100,10 +98,10 @@ likeBtn.addEventListener("click", () => {
 
     //mouse over & mouse off event listeners to highlight a favorite joke
     content.addEventListener("mouseover", () => {
-        content.style.color = "white";
+      content.style.color = "white";
     });
     content.addEventListener("mouseout", () => {
-        content.style.color = "black";
+      content.style.color = "black";
     });
 
     //delete an individual saved item
@@ -116,3 +114,11 @@ likeBtn.addEventListener("click", () => {
     });
   }
 });
+
+//event listeners for next joke button
+nextBtn.addEventListener("click", dispNewJoke());
+document.body.onkeyup = (e) => {
+  if (e.code == "ArrowRight") {
+    dispNewJoke();
+  }
+};

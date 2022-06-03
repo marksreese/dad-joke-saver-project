@@ -70,8 +70,8 @@ li {
 
 li:active {
   cursor: grabbing;
-    cursor: -moz-grabbing;
-    cursor: -webkit-grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
 }
 
 /* <---Button---> */
