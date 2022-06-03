@@ -49,9 +49,6 @@ u {
   color: black;
 }
 
-/* #id01 {
-} */
-
 li {
   color: black;
   max-width: 20em;
@@ -65,6 +62,16 @@ li {
   line-height: 145%;
   font-size: 1.5em;
   font-variant: small-caps;
+  cursor: move; /* fallback if grab cursor is unsupported */
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+
+li:active {
+  cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
 }
 
 /* <---Button---> */
@@ -129,11 +136,42 @@ li {
   /* right: 670px; */
 }
 
+#fav-gen:after {
+  content: "";
+  background: lightblue;
+  display: block;
+  position: absolute;
+  padding-top: 150%;
+  padding-left: 150%;
+  margin-left: -15px !important;
+  margin-top: -80%;
+  opacity: 0;
+  transition: all 0.8s;
+}
+
+#fav-gen:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s;
+}
+
+/* #fav-gen:active {
+  box-shadow: 0 5px black;
+  transform: translateY(10px);
+} */
+
 button {
   background-color: lightsteelblue;
-  /* font-color: rgb(39, 34, 34); */
   opacity: 1;
+  color: black;
 }
+
+/* button:active {
+  background-color: lightgrey;
+  box-shadow: 0 5px black;
+  transform: translateY(10px);
+} */
 
 /* #x-gen:hover {
   background-color: lightsteelblue;
@@ -170,7 +208,6 @@ button {
   font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times,
     serif;
   /* background-color: lightsteelblue; */
-  outline: none;
   padding-top: 5px;
   text-decoration: none;
   height: 40px;
@@ -179,6 +216,7 @@ button {
   transition: 0.5s;
   padding-bottom: 5px;
   border-radius: px;
+  color: black;
 }
 
 /* <---containers--->  */
@@ -186,4 +224,8 @@ button {
 .container2 {
   width: 600px;
   border: #000;
+}
+
+#sizing {
+  height: 50px;
 }
