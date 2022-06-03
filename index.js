@@ -45,33 +45,31 @@ nextBtn.addEventListener("click", () => {
   dispNewJoke();
 });
 
-//display initial joke on load
+//display second joke on load -- this is needed to get nextBtn event listener to work
 document.addEventListener("DOMContentLoaded", () => {
   dispNewJoke();
 });
 
 //drag event functions
-const allowDrag = (ev) => {
-  ev.preventDefault();
+const allowDrag = (e) => {
+  e.preventDefault();
 };
 //sets type and value of dragged data
-const drag = (ev) => {
-  ev.dataTransfer.setData("text", ev.target.id);
-  // console.log("drag id: " + ev.target.id);
+const drag = (e) => {
+  e.dataTransfer.setData("text", e.target.id);
+  // console.log("drag id: " + e.target.id);
 };
 //gets dragged data that is of the same type "text" and appends the element with #data to the drop element
-const drop = (ev) => {
-  ev.preventDefault();
-  const data = ev.dataTransfer.getData("text");
+const drop = (e) => {
+  e.preventDefault();
+  const data = e.dataTransfer.getData("text");
   const node = document.getElementById(data);
   // console.log("this is drop data: " + data);
-  // console.log("this is the drop id: " + ev.target.id);
   // console.log("this is the node: " + node);
-  faveDisp.insertBefore(node, ev.target);
+  faveDisp.insertBefore(node, e.target);
 };
 
-//event listener to add current joke to saved jokes array and display in favorites container
-likeBtn.addEventListener("click", () => {
+const saveJoke = () => {
   if (isRedundant(mainDisp.textContent)) {
     mainDisp.textContent = "This joke has already been saved!";
   } else if (mainDisp.textContent === "This joke has already been saved!") {
@@ -113,12 +111,30 @@ likeBtn.addEventListener("click", () => {
       savedJokes[index] = "";
     });
   }
-});
+}
 
-//event listeners for next joke button
+//event listener to add current joke to saved jokes array and display in favorites container
+likeBtn.addEventListener("click", saveJoke());
+//WHY DOES CALLING A FUNCTION INSTEAD OF WRITING AN ARROW FUNCTION INSIDE CALL THIS ON PAGE LOAD
+//event listeners for next joke button click and right arrow keypress upstroke
 nextBtn.addEventListener("click", dispNewJoke());
 document.body.onkeyup = (e) => {
-  if (e.code == "ArrowRight") {
-    dispNewJoke();
+  e.preventDefault();
+  switch (true){
+    case (e.code == "ArrowRight"):
+      dispNewJoke();
+      break;
+    case (e.code == "ArrowDown"):
+      saveJoke();
+      break;
+    case (e.code == "ArrowLeft"):
+      //can add toggle #fav-list 
+      break;
+    case (e.code == "ArrowLeft"):
+      //can add toggle #fav-list 
+      break;
+    case (e.code == "Space"):
+      saveJoke();
+      break;
   }
 };
