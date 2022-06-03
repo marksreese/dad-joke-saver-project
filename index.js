@@ -34,21 +34,11 @@ const dispNewJoke = () => {
       if (!isRedundant(jokeText)) {
         mainDisp.textContent = jokeText;
       } else {
-        dispNewJoke();
+        dispNewJoke;
       }
       // console.log(joke)
     });
 };
-
-//event listener for next joke button
-nextBtn.addEventListener("click", () => {
-  dispNewJoke();
-});
-
-//display second joke on load -- this is needed to get nextBtn event listener to work
-document.addEventListener("DOMContentLoaded", () => {
-  dispNewJoke();
-});
 
 //drag event functions
 const allowDrag = (e) => {
@@ -113,11 +103,15 @@ const saveJoke = () => {
   }
 }
 
+//display a joke on page load
+document.addEventListener("DOMContentLoaded", dispNewJoke);
+
 //event listener to add current joke to saved jokes array and display in favorites container
-likeBtn.addEventListener("click", saveJoke());
-//WHY DOES CALLING A FUNCTION INSTEAD OF WRITING AN ARROW FUNCTION INSIDE CALL THIS ON PAGE LOAD
+likeBtn.addEventListener("click", saveJoke);
+
 //event listeners for next joke button click and right arrow keypress upstroke
-nextBtn.addEventListener("click", dispNewJoke());
+nextBtn.addEventListener("click", dispNewJoke);
+
 document.body.onkeyup = (e) => {
   e.preventDefault();
   switch (true){
@@ -125,13 +119,13 @@ document.body.onkeyup = (e) => {
       dispNewJoke();
       break;
     case (e.code == "ArrowDown"):
+      document.getElementById('id01').style.display='block'
+      break;
+    case (e.code == "ArrowLeft"):
       saveJoke();
       break;
-    case (e.code == "ArrowLeft"):
-      //can add toggle #fav-list 
-      break;
-    case (e.code == "ArrowLeft"):
-      //can add toggle #fav-list 
+    case (e.code == "ArrowUp"):
+      document.getElementById('id01').style.display='none'
       break;
     case (e.code == "Space"):
       saveJoke();
