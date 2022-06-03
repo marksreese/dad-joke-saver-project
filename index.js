@@ -2,8 +2,6 @@
 const nextBtn = document.getElementById("gen");
 const likeBtn = document.getElementById("fav-gen");
 const mainDisp = document.getElementById("quote");
-mainDisp.draggable = true;
-mainDisp.ondragstart = "drag(event)";
 const faveDisp = document.getElementById("fav-list").querySelector("ol");
 
 //array to store saved jokes
@@ -59,18 +57,17 @@ const allowDrag = (ev) => {
 //sets type and value of dragged data
 const drag = (ev) => {
     ev.dataTransfer.setData("text", ev.target.id);
-    console.log("drag id: " + ev.target.id);
+    // console.log("drag id: " + ev.target.id);
 }
 //gets dragged data that is of the same type "text" and appends the element with #data to the drop element
 const drop = (ev) => {
     ev.preventDefault();
     const data = ev.dataTransfer.getData("text");
-    const list = document.getElementById("fav-list").querySelector("ol");
     const node = document.getElementById(data);
-    console.log("this is data: " + data);
-    console.log("this is the id: " + ev.target.id);
-    console.log("this is the node: " + node);
-    list.insertBefore(node, ev.target);
+    // console.log("this is drop data: " + data);
+    // console.log("this is the drop id: " + ev.target.id);
+    // console.log("this is the node: " + node);
+    faveDisp.insertBefore(node, ev.target);
 }
 
 //event listener to add current joke to saved jokes array and display in favorites container
@@ -93,8 +90,8 @@ likeBtn.addEventListener("click", () => {
     delBtn.textContent = "X";
     content.append(delBtn);
     //enable drag and drop functionality to change ranking of saved items
-    content.draggable = true;
-    content.ondragstart = "drag(event)";
+    content.setAttribute("draggable", true);
+    content.setAttribute("ondragstart", "drag(event)");
     content.id = "dragging" + index;
     // console.log("content id: " + content.id);
     // content.ondrop = "drop(event)";
