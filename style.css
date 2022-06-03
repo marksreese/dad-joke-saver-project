@@ -62,6 +62,16 @@ li {
   line-height: 145%;
   font-size: 1.5em;
   font-variant: small-caps;
+  cursor: move; /* fallback if grab cursor is unsupported */
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+
+li:active {
+  cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
 }
 
 /* <---Button---> */
